@@ -1,0 +1,66 @@
+command Listen
+cd StudyBud
+python -m venv myenv
+.\myenv\Scripts\activate
+pip install mysqlclient
+
+startwithC9
+python -m venv myenv
+source envname/bin/activate
+sudo apt-get update
+sudo apt-get upgrade
+pip install django
+pip install mysqlclient
+pip install agora_token_builder
+python -m pip install Pillow
+
+需要下載的環境
+pip install mysqlclient
+pip install agora_token_builder
+pip install opencv-python
+sudo apt-get install libgl1-mesa-glx
+pip install boto3
+pip install --upgrade pyopenssl
+pip install wagtail
+
+
+
+try:
+sudo apt update
+sudo apt install v4l-utils
+
+pip install -r requirements.txt
+
+
+
+
+admin account
+admin
+P@ssw0rd2023
+
+test
+P@ssw0rd2023
+
+backup data command
+    python3 manage.py makemigrations
+    python3 manage.py migrate
+
+#隱藏文件#
+admin.py
+
+runserver
+
+python3 manage.py runserver 0.0.0.0:8000
+
+
+python manage.py runsslserver --certificate example.crt --key example.key 0.0.0.0:8000
+python3 manage.py runsslserver --certificate SSL/server.crt --key SSL/server.key 0.0.0.0:8000
+
+settings
+import pymysql
+
+pymysql.install_as_MySQLdb()
+
+翻译word
+python3 manage.py makemessages -l zh_hant
+python3 manage.py compilemessages

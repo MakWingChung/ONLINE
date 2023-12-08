@@ -1,0 +1,70 @@
+{% extends 'main.html' %}
+{% load i18n %}
+{% block content %}
+<main class="update-account layout">
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <a href="{% url 'home' %}">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+              <title>arrow-left</title>
+              <path
+                d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z">
+              </path>
+            </svg>
+          </a>
+          <h3>Edit your profile</h3>
+        </div>
+      </div>
+        {#多语言切换下拉框#}
+<nav class="navbar navbar-expand-md fixed-top navbar-light box-shadow bg-white">
+    <div class="container">
+        <a class="navbar-brand align-items-md-center" href="#">{% trans "change LANGUAGES" %}</a>
+        <form class="form-inline ml-3-md" action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+
+            <div class="input-group">
+                <select name="language" class="form-control">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+
+                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-inline btn-sm bg-success">
+                        {% trans "Select" %}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</nav>
+      <div class="layout__body">
+        <form class="form" action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          {% for field in form %}
+          <div class="form__group">
+            <label for="profile_pic">{{field.label}}</label>
+            {{field}}
+          </div>
+          {% endfor %}
+
+
+          <div class="form__action">
+            <a class="btn btn--dark" href="index.html">Cancel</a>
+            <button class="btn btn--main" type="submit">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+</main>
+{% endblock content %}
