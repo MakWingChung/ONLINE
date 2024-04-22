@@ -239,17 +239,7 @@ def page_not_found(request, exception):
 
     
     
-    
-    
-    
-def ResourceCenter(request):
-    return render(request, 'base/ResourceCenter.html')
-    
-    
-    
-    
-    
-    
+
     
     
     
@@ -347,4 +337,9 @@ def deleteMember(request):
     except json.JSONDecodeError:
         return JsonResponse({'error': 'Invalid JSON data'}, status=400)
     
-   
+from django.shortcuts import render
+from .models import Seed
+
+def seeds_view(request):
+    seeds = Seed.objects.all()
+    return render(request, 'seeds.html', {'seeds': seeds})

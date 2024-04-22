@@ -1,7 +1,6 @@
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-from .models import Room, User
-
+from .models import Room, User, Seed
 
 class MyUserCreationForm(UserCreationForm):
     class Meta:
@@ -20,3 +19,10 @@ class UserForm(ModelForm):
     class Meta:
         model = User
         fields = ['avatar', 'name', 'username', 'email', 'bio']
+        
+
+from django import forms
+
+class SeedForm(forms.Form):
+    data = forms.CharField(max_length=100)
+    # Add more form fields as needed

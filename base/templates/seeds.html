@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Seeds</title>
+</head>
+<body>
+    <h1>Seeds</h1>
+    <ul>
+        {% for seed in seeds %}
+            <li>
+                <h3>{{ seed.name }}</h3>
+                <p>Description: {{ seed.description }}</p>
+                <p>Quantity: {{ seed.quantity }}</p>
+                <p>Created at: {{ seed.created_at }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+{% endblock %}
+

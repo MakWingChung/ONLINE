@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import seeds_view
 
 urlpatterns = [
     path('login/', views.loginPage, name="login"),
@@ -27,7 +28,5 @@ urlpatterns = [
     path('create_member/', views.createMember),
     path('get_member/', views.getMember),
     path('delete_member/', views.deleteMember),
-
-    path('ResourceCenter/', views.ResourceCenter, name="ResourceCenter"),
-    
+    path('seeds/', seeds_view, name='seeds'),
 ]

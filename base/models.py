@@ -1,16 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class User(AbstractUser):
-    name = models.CharField(max_length=200, null=True)
+    name = models.CharField(unique=True,max_length=200, null=True)
     email = models.EmailField(unique=True, null=True)
     bio = models.TextField(null=True)
 
     avatar = models.ImageField(null=True, default="avatar.svg")
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    USERNAME_FIELD = 'name'
+    REQUIRED_FIELDS = ['email']
 
 
 class Topic(models.Model):
@@ -56,6 +58,19 @@ class RoomMember(models.Model):
     uid = models.CharField(max_length=1000)
     room_name = models.CharField(max_length=200)
     insession = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+ 
+ 
+#seed
+
+        
+class Seed(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    quantity = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
